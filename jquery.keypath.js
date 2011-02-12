@@ -7,7 +7,7 @@
 
 	/* Function for looking up a value in an object using a keypath string.
 	 *
-	 * Often useful when working with large objects such as JSOn data returned
+	 * Often useful when working with large objects such as JSON data returned
 	 * from a server as it allows quick navigation to only the required
 	 * information.
 	 *
