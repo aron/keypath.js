@@ -1,3 +1,9 @@
+/*  Keypath jQuery Plugin - v1.0
+ *  Copyright 2011, Aron Carroll
+ *  Released under the MIT license
+ *  More Information: http://github.com/aron/jquery.keypath.js
+ */
+
 (function (undefined) {
 
 	function keypath(object, path, fallback, prototype) {
