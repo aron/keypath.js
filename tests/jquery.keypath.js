@@ -23,6 +23,7 @@
 
 	test('jQuery.keypath(object, path, fallback)', function () {
 		equals(keypath(object, 'my.crazy.path', true), true, 'Should return the fallback value');
+		equals(keypath(object, 'my.crazy.path', undefined), undefined, 'Should allow undefined as the fallback value');
 	});
 
 	test('jQuery.keypath(object, path, fallback, prototype)', function () {
