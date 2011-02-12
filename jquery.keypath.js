@@ -1,10 +1,10 @@
 (function (undefined) {
 
 	function keypath(object, path, fallback, prototype) {
-		var keys = path.split('.'),
+		var keys = (path || '').split('.'),
 		    key;
 
-		while (keys.length) {
+		while (object && keys.length) {
 			key = keys.shift();
 
 			if (object.hasOwnProperty(key) || (prototype === true && object[key] !== undefined)) {
