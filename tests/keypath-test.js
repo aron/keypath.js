@@ -31,4 +31,13 @@
 	test('keypath(object, path, fallback, prototype)', function () {
 		equals(keypath(object, 'bad', null, true), 'argh', 'Should traverse the prototype chain');
 	});
+	
+	module('flatten.noConflict()');
+
+	test('it should return the keypath function and restore state', function () {
+		var _keypath = keypath;
+		equal(keypath.noConflict(), _keypath);
+		equal(this.keypath, undefined);
+	});
+
 }());

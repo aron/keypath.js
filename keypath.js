@@ -5,6 +5,8 @@
  */
 (function (context, undefined) {
 
+	var _keypath = context.keypath;
+
 	/* Function for looking up a value in an object using a keypath string.
 	 *
 	 * Often useful when working with large objects such as JSON data returned
@@ -67,6 +69,21 @@
 
 		return (arguments.length > 2) ? fallback : null;
 	}
+
+	/* Public: Restores the previous "keypath" property on the current
+	 * scope and returns the function. Use this to redefine the
+	 * function in a different namespace.
+	 *
+	 * Examples
+	 *
+	 *	 jQuery.keypath = keypath.noConflict();
+	 *
+	 * Returns keypath Function.
+	 */
+	keypath.noConflict = function () {
+		context.keypath = _keypath;
+		return keypath;
+	};
 
 	// Export depending on the environment.
 	if (context.exports) {

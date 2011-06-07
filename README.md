@@ -53,6 +53,22 @@ keypath(data, 'tracks.0.duration', '2.42');
 //=> '2.42'
 ```
 
+flatten.noConflict()
+--------------------
+
+Public: Restores the previous "keypath" property on the current scope and
+returns the function. Use this to redefine the function in a different
+namespace, for example to add the function as a jQuery plugin.
+
+### Returns
+
+Returns the `keypath()` Function.
+
+```javascript
+jQuery.keypath = keypath.noConflict();
+jQuery.keypath(data, 'tracks.0.duration');
+```
+
 ### Licence
 
 Released under the MIT license
