@@ -1,19 +1,15 @@
-/*  Keypath jQuery Plugin - v1.0
+/*  Keypath.js - v1.1
  *  Copyright 2011, Aron Carroll
  *  Released under the MIT license
- *  More Information: http://github.com/aron/jquery.keypath.js
+ *  More Information: http://github.com/aron/keypath.js
  */
-(function (undefined) {
+(function (context, undefined) {
 
 	/* Function for looking up a value in an object using a keypath string.
 	 *
 	 * Often useful when working with large objects such as JSON data returned
 	 * from a server as it allows quick navigation to only the required
 	 * information.
-	 *
-	 * NOTE: This plugin is not dependant on jQuery. If included on a page where
-	 * jQuery is not present it will simply add itself to the global object. In
-	 * the case of a web browser the window object.
 	 *
 	 * object    - An Object to query.
 	 * path      - A dot sepeated keypath String.
@@ -39,18 +35,14 @@
 	 *     }
 	 *   ]};
 	 *
-	 *   jQuery.keypath(data, 'tracks.0.artist.name');
+	 *   keypath(data, 'tracks.0.artist.name');
 	 *   //=> 'The Beatles'
 	 *
-	 *   jQuery.keypath(data, 'tracks.0.duration');
+	 *   keypath(data, 'tracks.0.duration');
 	 *   //=> null
 	 *
-	 *   jQuery.keypath(data, 'tracks.0.duration', '2.42');
+	 *   keypath(data, 'tracks.0.duration', '2.42');
 	 *   //=> '2.42'
-	 *
-	 *   // Without jQuery loaded on the page.
-	 *   keypath(data, 'tracks.0.album.url);
-	 *   //=> 'http://www.last.fm/music/The+Beatles/Rubber+Soul'
 	 *
 	 * Returns the queried value if found. Otherwise returns null unless a
 	 * fallback parameter is provided.
@@ -76,6 +68,11 @@
 		return (arguments.length > 2) ? fallback : null;
 	}
 
-	this.keypath = keypath;
+	// Export depending on the environment.
+	if (context.exports) {
+		context.exports = keypath;
+	} else {
+		context.keypath = keypath;
+	}
 
-}).call(window.jQuery || this);
+})(typeof module === 'object' ? module : this);

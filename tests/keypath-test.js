@@ -1,4 +1,6 @@
-(function () {module('jQuery.keypath');
+(function () {
+	module('keypath');
+
 	var object = {
 		simple: 'okay',
 		food: {
@@ -11,7 +13,7 @@
 
 	Object.prototype.bad = 'argh';
 
-	test('jQuery.keypath(object, path)', function () {
+	test('keypath(object, path)', function () {
 		equals(keypath(object, 'simple'), 'okay', 'Should look up a value by keypath');
 		equals(keypath(object, 'food.eggs'), 'good', 'Should handle multiple keys');
 		equals(keypath(object, 'turtles.2'), 'Donatello', 'Should handle array indexes');
@@ -21,12 +23,12 @@
 		equals(keypath(), null, 'Should not break when no object is provided');
 	});
 
-	test('jQuery.keypath(object, path, fallback)', function () {
+	test('keypath(object, path, fallback)', function () {
 		equals(keypath(object, 'my.crazy.path', true), true, 'Should return the fallback value');
 		equals(keypath(object, 'my.crazy.path', undefined), undefined, 'Should allow undefined as the fallback value');
 	});
 
-	test('jQuery.keypath(object, path, fallback, prototype)', function () {
+	test('keypath(object, path, fallback, prototype)', function () {
 		equals(keypath(object, 'bad', null, true), 'argh', 'Should traverse the prototype chain');
 	});
 }());
