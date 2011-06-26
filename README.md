@@ -53,7 +53,7 @@ keypath(data, 'tracks.0.duration', '2.42');
 //=> '2.42'
 ```
 
-flatten.noConflict()
+keypath.noConflict()
 --------------------
 
 Public: Restores the previous "keypath" property on the current scope and
