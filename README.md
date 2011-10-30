@@ -53,6 +53,22 @@ keypath(data, 'tracks.0.duration', '2.42');
 //=> '2.42'
 ```
 
+To use with node.js:
+
+```javascript
+var keypath = require('keypath');
+keypath(data, 'tracks.0.duration');
+```
+
+To use with AMD loader (such as curl.js or require.js):
+
+```javascript
+require(['keypath'], function (keypath) {
+  var keypath = require('keypath');
+  keypath(data, 'tracks.0.duration');
+});
+```
+
 keypath.noConflict()
 --------------------
 
