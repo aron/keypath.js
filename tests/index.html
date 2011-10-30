@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>QUnit Test Suite</title>
-	<link rel="stylesheet" href="qunit/qunit.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="qunit/qunit.css" media="screen">
 	<style>
 		.fail { white-space: pre; }
 	</style>
@@ -14,8 +14,25 @@
 	<h2 id="qunit-userAgent"></h2>
 	<ol id="qunit-tests"></ol>
 	<div id="qunit-fixture">test markup</div>
-	<script type="text/javascript" src="qunit/qunit.js"></script>
-	<script type="text/javascript" src="../keypath.js"></script>
-	<script type="text/javascript" src="keypath-test.js"></script>
+	<script src="qunit/qunit.js"></script>
+	<script src="../keypath.js"></script>
+	<script src="keypath-test.js"></script>
+	<script>
+    function define() {
+      define.called = true;
+      define.args = [].slice.call(arguments, 0);
+    }
+    define.amd = {};
+	</script>
+	<script src="../keypath.js"></script>
+	<script>
+    module('Support for AMD loader');
+
+    test('it should register the "keypath" module using define()', function () {
+      ok(window.define.called);
+      equal(window.define.args[0], 'keypath');
+      equal(typeof window.define.args[1], 'function');
+    });
+	</script>
 </body>
 </html>

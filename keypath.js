@@ -86,7 +86,12 @@
   };
 
   // Export depending on the environment.
-  if (context.exports) {
+  if (typeof context.define === 'function' && context.define.amd) {
+    context.define('keypath', function () {
+      return keypath;
+    });
+  }
+  else if (context.exports) {
     context.exports = keypath;
   } else {
     context.keypath = keypath;
